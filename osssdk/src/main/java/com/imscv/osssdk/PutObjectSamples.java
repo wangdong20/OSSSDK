@@ -41,6 +41,9 @@ public class PutObjectSamples extends OssSamples {
 
         try {
             PutObjectResult putResult = oss.putObject(put);
+            if(successListenerInSample != null) {
+                successListenerInSample.onSuccess();
+            }
 
             if(successListener != null) {
                 successListener.onSuccess();
@@ -98,6 +101,9 @@ public class PutObjectSamples extends OssSamples {
                 Log.d("ETag", result.getETag());
                 Log.d("RequestId", result.getRequestId());
 
+                if(successListenerInSample != null) {
+                    successListenerInSample.onSuccess();
+                }
                 if(successListener != null) {
                     successListener.onSuccess();
                 }
@@ -175,6 +181,9 @@ public class PutObjectSamples extends OssSamples {
 
                 Log.d("ETag", result.getETag());
                 Log.d("RequestId", result.getRequestId());
+                if(successListenerInSample != null) {
+                    successListenerInSample.onSuccess();
+                }
                 if(successListener != null) {
                     successListener.onSuccess();
                 }
@@ -232,6 +241,9 @@ public class PutObjectSamples extends OssSamples {
                 String serverCallbackReturnJson = result.getServerCallbackReturnBody();
 
                 Log.d("servercallback", serverCallbackReturnJson);
+                if(successListenerInSample != null) {
+                    successListenerInSample.onSuccess();
+                }
                 if(successListener != null) {
                     successListener.onSuccess();
                 }
@@ -285,6 +297,9 @@ public class PutObjectSamples extends OssSamples {
 
                 Log.d("ETag", result.getETag());
                 Log.d("RequestId", result.getRequestId());
+                if(successListenerInSample != null) {
+                    successListenerInSample.onSuccess();
+                }
                 if(successListener != null) {
                     successListener.onSuccess();
                 }
@@ -345,6 +360,9 @@ public class PutObjectSamples extends OssSamples {
             public void onSuccess(AppendObjectRequest request, AppendObjectResult result) {
                 Log.d("AppendObject", "AppendSuccess");
                 Log.d("NextPosition", "" + result.getNextPosition());
+                if(successListenerInSample != null) {
+                    successListenerInSample.onSuccess();
+                }
                 if(successListener != null) {
                     successListener.onSuccess();
                 }

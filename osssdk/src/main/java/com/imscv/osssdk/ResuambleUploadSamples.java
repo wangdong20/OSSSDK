@@ -43,6 +43,9 @@ public class ResuambleUploadSamples extends OssSamples {
             @Override
             public void onSuccess(ResumableUploadRequest request, ResumableUploadResult result) {
                 Log.d("resumableUpload", "success!");
+                if(successListenerInSample != null) {
+                    successListenerInSample.onSuccess();
+                }
                 if(successListener != null) {
                     successListener.onSuccess();
                 }
@@ -139,6 +142,9 @@ public class ResuambleUploadSamples extends OssSamples {
             @Override
             public void onSuccess(ResumableUploadRequest request, ResumableUploadResult result) {
                 Log.d("resumableUpload", "success!");
+                if(successListenerInSample != null) {
+                    successListenerInSample.onSuccess();
+                }
                 if(successListener != null) {
                     successListener.onSuccess();
                 }

@@ -68,6 +68,9 @@ public class MultipartUploadSamples extends OssSamples {
 
         CompleteMultipartUploadRequest complete = new CompleteMultipartUploadRequest(testBucket, testObject, uploadId, partETags);
         CompleteMultipartUploadResult completeResult = oss.completeMultipartUpload(complete);
+        if(successListenerInSample != null) {
+            successListenerInSample.onSuccess();
+        }
 
         if(successListener != null) {
             successListener.onSuccess();

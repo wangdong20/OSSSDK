@@ -8,6 +8,7 @@ public class RequestWrapper {
     private String testBucket;
     private String testObject;
     private String uploadFilePath;
+    private OnSuccessListener successListener;
 
     /**
      * 0 putObject 1 multipartupload 2 resuambleupload 3 delete object in server
@@ -25,6 +26,22 @@ public class RequestWrapper {
         this.testBucket = testBucket;
         this.testObject = testObject;
         this.uploadFilePath = uploadFilePath;
+    }
+
+    public RequestWrapper(int requestType, String testBucket, String testObject, String uploadFilePath, OnSuccessListener successListener) {
+        this.requestType = requestType;
+        this.testBucket = testBucket;
+        this.testObject = testObject;
+        this.uploadFilePath = uploadFilePath;
+        this.successListener = successListener;
+    }
+
+    public OnSuccessListener getSuccessListener() {
+        return successListener;
+    }
+
+    public void setSuccessListener(OnSuccessListener successListener) {
+        this.successListener = successListener;
     }
 
     public int getRequestType() {

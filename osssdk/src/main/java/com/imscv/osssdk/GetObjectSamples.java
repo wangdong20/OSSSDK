@@ -60,6 +60,9 @@ public class GetObjectSamples extends OssSamples {
             Log.d("asyncGetObjectSample", "download success.");
             inputStream.close();
             outputStream.close();
+            if(successListenerInSample != null) {
+                successListenerInSample.onSuccess();
+            }
 
             if(successListener != null) {
                 successListener.onSuccess();
@@ -110,6 +113,9 @@ public class GetObjectSamples extends OssSamples {
                     outputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+                if(successListenerInSample != null) {
+                    successListenerInSample.onSuccess();
                 }
 
                 if(successListener != null) {
@@ -176,6 +182,9 @@ public class GetObjectSamples extends OssSamples {
                     outputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
+                }
+                if(successListenerInSample != null) {
+                    successListenerInSample.onSuccess();
                 }
 
                 if(successListener != null) {

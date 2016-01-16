@@ -87,7 +87,7 @@ public class BaseOssDispatcher implements OSSDispatcher {
         switch (wrapper.getRequestType()) {
             case RequestWrapper.RequestType.PUT:
                 PutObjectSamples putSample = new PutObjectSamples(oss, wrapper);
-                putSample.setOnSuccessListener(new OnSuccessListener() {
+                putSample.setOnSuccessListenerInSample(new OnSuccessListener() {
                     @Override
                     public void onSuccess() {
                         uploadFileInfoToServer(wrapper);
@@ -97,7 +97,7 @@ public class BaseOssDispatcher implements OSSDispatcher {
                 break;
             case RequestWrapper.RequestType.MULTIPART:
                 MultipartUploadSamples multiSample = new MultipartUploadSamples(oss, wrapper);
-                multiSample.setOnSuccessListener(new OnSuccessListener() {
+                multiSample.setOnSuccessListenerInSample(new OnSuccessListener() {
                     @Override
                     public void onSuccess() {
                         uploadFileInfoToServer(wrapper);
@@ -115,7 +115,7 @@ public class BaseOssDispatcher implements OSSDispatcher {
                 break;
             case RequestWrapper.RequestType.RESUAMBLE:
                 ResuambleUploadSamples resuambleSample = new ResuambleUploadSamples(oss, wrapper);
-                resuambleSample.setOnSuccessListener(new OnSuccessListener() {
+                resuambleSample.setOnSuccessListenerInSample(new OnSuccessListener() {
                     @Override
                     public void onSuccess() {
                         uploadFileInfoToServer(wrapper);

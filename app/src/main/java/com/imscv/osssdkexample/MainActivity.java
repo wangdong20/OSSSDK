@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.imscv.osssdk.OnSuccessListener;
 import com.imscv.osssdk.RequestWrapper;
 import com.imscv.osssdk.RequestWrapperQueue;
 import com.imscv.osssdk.UploadFileInfoInServer;
@@ -70,32 +71,112 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         RequestWrapperQueue queue = RequestWrapperQueue.getInstance(this);
         queue.add(new RequestWrapper(RequestWrapper.RequestType.GET,
                 BUCKET, generatePathInServer("20160108115205.jpg"),
-                PHOTO_PATH + "/" + "20160108115205.jpg"));
+                PHOTO_PATH + "/" + "20160108115205.jpg", new OnSuccessListener() {
+            @Override
+            public void onSuccess() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "已下载20160108115205.jpg", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }));
         queue.add(new RequestWrapper(RequestWrapper.RequestType.GET,
                 BUCKET, generatePathInServer("20160108182657.jpg"),
-                PHOTO_PATH + "/" + "20160108182657.jpg"));
+                PHOTO_PATH + "/" + "20160108182657.jpg", new OnSuccessListener() {
+            @Override
+            public void onSuccess() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "已下载20160108182657.jpg", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }));
         queue.add(new RequestWrapper(RequestWrapper.RequestType.GET,
                 BUCKET, generatePathInServer("20160108182702.jpg"),
-                PHOTO_PATH + "/" + "20160108182702.jpg"));
+                PHOTO_PATH + "/" + "20160108182702.jpg", new OnSuccessListener() {
+            @Override
+            public void onSuccess() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "已下载20160108182702.jpg", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }));
         queue.add(new RequestWrapper(RequestWrapper.RequestType.GET,
                 BUCKET, generatePathInServer("VID_20160112_181714.mp4"),
-                PHOTO_PATH + "/" + "VID_20160112_181714.mp4"));
+                PHOTO_PATH + "/" + "VID_20160112_181714.mp4", new OnSuccessListener() {
+            @Override
+            public void onSuccess() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "已下载VID_20160112_181714.mp4", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }));
     }
 
     private void testUpload() {
         RequestWrapperQueue queue = RequestWrapperQueue.getInstance(this);
         queue.add(new RequestWrapper(RequestWrapper.RequestType.PUT,
                 BUCKET, generatePathInServer("20160108115205.jpg"),
-                PHOTO_PATH + "/" + "20160108115205.jpg"));
+                PHOTO_PATH + "/" + "20160108115205.jpg", new OnSuccessListener() {
+            @Override
+            public void onSuccess() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "已上传20160108115205.jpg", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }));
         queue.add(new RequestWrapper(RequestWrapper.RequestType.PUT,
                 BUCKET, generatePathInServer("20160108182657.jpg"),
-                PHOTO_PATH + "/" + "20160108182657.jpg"));
+                PHOTO_PATH + "/" + "20160108182657.jpg", new OnSuccessListener() {
+            @Override
+            public void onSuccess() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "已上传20160108182657.jpg", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }));
         queue.add(new RequestWrapper(RequestWrapper.RequestType.PUT,
                 BUCKET, generatePathInServer("20160108182702.jpg"),
-                PHOTO_PATH + "/" + "20160108182702.jpg"));
+                PHOTO_PATH + "/" + "20160108182702.jpg", new OnSuccessListener() {
+            @Override
+            public void onSuccess() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "已上传20160108182702.jpg", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }));
         queue.add(new RequestWrapper(RequestWrapper.RequestType.RESUAMBLE,
                 BUCKET, generatePathInServer("VID_20160112_181714.mp4"),
-                PHOTO_PATH + "/" + "VID_20160112_181714.mp4"));
+                PHOTO_PATH + "/" + "VID_20160112_181714.mp4", new OnSuccessListener() {
+            @Override
+            public void onSuccess() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "已上传VID_20160112_181714.mp4", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }));
     }
 
     public void uploadFileInfoToServer(RequestWrapper wrapper) {
