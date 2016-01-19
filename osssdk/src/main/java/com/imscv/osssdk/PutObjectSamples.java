@@ -45,8 +45,8 @@ public class PutObjectSamples extends OssSamples {
                 successListenerInSample.onSuccess();
             }
 
-            if(successListener != null) {
-                successListener.onSuccess();
+            if(responseListener != null) {
+                responseListener.onSuccess();
             }
 
             Log.d("PutObject", "UploadSuccess");
@@ -58,6 +58,9 @@ public class PutObjectSamples extends OssSamples {
             e.printStackTrace();
         } catch (ServiceException e) {
             // 服务异常
+            if(responseListener != null) {
+                responseListener.onFail(e.toString());
+            }
             Log.e("RequestId", e.getRequestId());
             Log.e("ErrorCode", e.getErrorCode());
             Log.e("HostId", e.getHostId());
@@ -104,8 +107,8 @@ public class PutObjectSamples extends OssSamples {
                 if(successListenerInSample != null) {
                     successListenerInSample.onSuccess();
                 }
-                if(successListener != null) {
-                    successListener.onSuccess();
+                if(responseListener != null) {
+                    responseListener.onSuccess();
                 }
             }
 
@@ -118,6 +121,9 @@ public class PutObjectSamples extends OssSamples {
                 }
                 if (serviceException != null) {
                     // 服务异常
+                    if(responseListener != null) {
+                        responseListener.onFail(serviceException.toString());
+                    }
                     Log.e("ErrorCode", serviceException.getErrorCode());
                     Log.e("RequestId", serviceException.getRequestId());
                     Log.e("HostId", serviceException.getHostId());
@@ -139,6 +145,13 @@ public class PutObjectSamples extends OssSamples {
         try {
             PutObjectResult putResult = oss.putObject(put);
 
+            if(successListenerInSample != null) {
+                successListenerInSample.onSuccess();
+            }
+            if(responseListener != null) {
+                responseListener.onSuccess();
+            }
+
             Log.d("PutObject", "UploadSuccess");
 
             Log.d("ETag", putResult.getETag());
@@ -148,6 +161,9 @@ public class PutObjectSamples extends OssSamples {
             e.printStackTrace();
         } catch (ServiceException e) {
             // 服务异常
+            if(responseListener != null) {
+                responseListener.onFail(e.toString());
+            }
             Log.e("RequestId", e.getRequestId());
             Log.e("ErrorCode", e.getErrorCode());
             Log.e("HostId", e.getHostId());
@@ -184,8 +200,8 @@ public class PutObjectSamples extends OssSamples {
                 if(successListenerInSample != null) {
                     successListenerInSample.onSuccess();
                 }
-                if(successListener != null) {
-                    successListener.onSuccess();
+                if(responseListener != null) {
+                    responseListener.onSuccess();
                 }
             }
 
@@ -198,6 +214,9 @@ public class PutObjectSamples extends OssSamples {
                 }
                 if (serviceException != null) {
                     // 服务异常
+                    if(responseListener != null) {
+                        responseListener.onFail(serviceException.toString());
+                    }
                     Log.e("ErrorCode", serviceException.getErrorCode());
                     Log.e("RequestId", serviceException.getRequestId());
                     Log.e("HostId", serviceException.getHostId());
@@ -244,8 +263,8 @@ public class PutObjectSamples extends OssSamples {
                 if(successListenerInSample != null) {
                     successListenerInSample.onSuccess();
                 }
-                if(successListener != null) {
-                    successListener.onSuccess();
+                if(responseListener != null) {
+                    responseListener.onSuccess();
                 }
             }
 
@@ -258,6 +277,9 @@ public class PutObjectSamples extends OssSamples {
                 }
                 if (serviceException != null) {
                     // 服务异常
+                    if(responseListener != null) {
+                        responseListener.onFail(serviceException.toString());
+                    }
                     Log.e("ErrorCode", serviceException.getErrorCode());
                     Log.e("RequestId", serviceException.getRequestId());
                     Log.e("HostId", serviceException.getHostId());
@@ -300,8 +322,8 @@ public class PutObjectSamples extends OssSamples {
                 if(successListenerInSample != null) {
                     successListenerInSample.onSuccess();
                 }
-                if(successListener != null) {
-                    successListener.onSuccess();
+                if(responseListener != null) {
+                    responseListener.onSuccess();
                 }
             }
 
@@ -314,6 +336,9 @@ public class PutObjectSamples extends OssSamples {
                 }
                 if (serviceException != null) {
                     // 服务异常
+                    if(responseListener != null) {
+                        responseListener.onFail(serviceException.toString());
+                    }
                     Log.e("ErrorCode", serviceException.getErrorCode());
                     Log.e("RequestId", serviceException.getRequestId());
                     Log.e("HostId", serviceException.getHostId());
@@ -363,8 +388,8 @@ public class PutObjectSamples extends OssSamples {
                 if(successListenerInSample != null) {
                     successListenerInSample.onSuccess();
                 }
-                if(successListener != null) {
-                    successListener.onSuccess();
+                if(responseListener != null) {
+                    responseListener.onSuccess();
                 }
             }
 
@@ -377,6 +402,9 @@ public class PutObjectSamples extends OssSamples {
                 }
                 if (serviceException != null) {
                     // 服务异常
+                    if(responseListener != null) {
+                        responseListener.onFail(serviceException.toString());
+                    }
                     Log.e("ErrorCode", serviceException.getErrorCode());
                     Log.e("RequestId", serviceException.getRequestId());
                     Log.e("HostId", serviceException.getHostId());

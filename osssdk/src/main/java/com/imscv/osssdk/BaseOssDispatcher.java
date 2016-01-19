@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.imscv.osssdkexample.SNUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +45,7 @@ public class BaseOssDispatcher implements OSSDispatcher {
     private static final String TAG = BaseOssDispatcher.class.getSimpleName();
 
     public static final String END_POINT = "oss-cn-shenzhen.aliyuncs.com";
-    public static final String CREDENTIALPROVIDER_URL = "http://trobot.imscv.com:82/api/getSTS";
+    private String CREDENTIALPROVIDER_URL = "http://trobot.imscv.com:82/api/getSTS?data={\"connectType\":id,\"param\":\"sn\"}";
 
     public BaseOssDispatcher(Context context) {
         mContext = context;
@@ -57,8 +58,11 @@ public class BaseOssDispatcher implements OSSDispatcher {
                 @Override
                 public OSSFederationToken getFederationToken() {
                     try {
-                        URL stsUrl = new URL(CREDENTIALPROVIDER_URL);
+                        String urlId = CREDENTIALPROVIDER_URL.replaceAll("id", "1");
+                        String urlLast = urlId.replaceAll("sn", SNUtils.getSN(mContext));
+                        URL stsUrl = new URL(urlLast);
                         HttpURLConnection conn = (HttpURLConnection) stsUrl.openConnection();
+                        conn.setRequestMethod("POST");
                         InputStream input = conn.getInputStream();
                         String jsonText = IOUtils.readStreamAsString(input, OSSConstants.DEFAULT_CHARSET_NAME);
                         JSONObject jsonObjs = new JSONObject(jsonText);

@@ -72,8 +72,8 @@ public class MultipartUploadSamples extends OssSamples {
             successListenerInSample.onSuccess();
         }
 
-        if(successListener != null) {
-            successListener.onSuccess();
+        if(responseListener != null) {
+            responseListener.onSuccess();
         }
 
         Log.d("multipartUpload", "multipart upload success! Location: " + completeResult.getLocation());

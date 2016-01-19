@@ -10,7 +10,7 @@ public class OssSamples {
     protected String testBucket;
     protected String testObject;
     protected String uploadFilePath;
-    protected OnSuccessListener successListener;
+    protected OnResponseListener responseListener;
     protected OnSuccessListener successListenerInSample;
 
     public OssSamples(OSS oss, String testBucket, String testObject, String uploadFilePath) {
@@ -25,13 +25,13 @@ public class OssSamples {
         this.testBucket = wrapper.getTestBucket();
         this.testObject = wrapper.getTestObject();
         this.uploadFilePath = wrapper.getUploadFilePath();
-        if(wrapper.getSuccessListener() != null) {
-            successListener = wrapper.getSuccessListener();
+        if(wrapper.getResponseListener() != null) {
+            responseListener = wrapper.getResponseListener();
         }
     }
 
-    public void setOnSuccessListener(OnSuccessListener listener) {
-        successListener = listener;
+    public void setOnResponseListener(OnResponseListener listener) {
+        responseListener = listener;
     }
 
     public void setOnSuccessListenerInSample(OnSuccessListener listener) {

@@ -64,8 +64,8 @@ public class GetObjectSamples extends OssSamples {
                 successListenerInSample.onSuccess();
             }
 
-            if(successListener != null) {
-                successListener.onSuccess();
+            if(responseListener != null) {
+                responseListener.onSuccess();
             }
 
             // 下载后可以查看文件元信息
@@ -78,6 +78,9 @@ public class GetObjectSamples extends OssSamples {
             e.printStackTrace();
         } catch (ServiceException e) {
             // 服务异常
+            if(responseListener != null) {
+                responseListener.onFail(e.toString());
+            }
             Log.e("RequestId", e.getRequestId());
             Log.e("ErrorCode", e.getErrorCode());
             Log.e("HostId", e.getHostId());
@@ -118,8 +121,8 @@ public class GetObjectSamples extends OssSamples {
                     successListenerInSample.onSuccess();
                 }
 
-                if(successListener != null) {
-                    successListener.onSuccess();
+                if(responseListener != null) {
+                    responseListener.onSuccess();
                 }
 
 
@@ -134,6 +137,9 @@ public class GetObjectSamples extends OssSamples {
                 }
                 if (serviceException != null) {
                     // 服务异常
+                    if(responseListener != null) {
+                        responseListener.onFail(serviceException.toString());
+                    }
                     Log.e("ErrorCode", serviceException.getErrorCode());
                     Log.e("RequestId", serviceException.getRequestId());
                     Log.e("HostId", serviceException.getHostId());
@@ -187,8 +193,8 @@ public class GetObjectSamples extends OssSamples {
                     successListenerInSample.onSuccess();
                 }
 
-                if(successListener != null) {
-                    successListener.onSuccess();
+                if(responseListener != null) {
+                    responseListener.onSuccess();
                 }
             }
 
@@ -201,6 +207,9 @@ public class GetObjectSamples extends OssSamples {
                 }
                 if (serviceException != null) {
                     // 服务异常
+                    if(responseListener != null) {
+                        responseListener.onFail(serviceException.toString());
+                    }
                     Log.e("ErrorCode", serviceException.getErrorCode());
                     Log.e("RequestId", serviceException.getRequestId());
                     Log.e("HostId", serviceException.getHostId());

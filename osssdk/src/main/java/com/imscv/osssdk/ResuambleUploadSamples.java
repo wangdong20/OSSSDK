@@ -46,8 +46,8 @@ public class ResuambleUploadSamples extends OssSamples {
                 if(successListenerInSample != null) {
                     successListenerInSample.onSuccess();
                 }
-                if(successListener != null) {
-                    successListener.onSuccess();
+                if(responseListener != null) {
+                    responseListener.onSuccess();
                 }
             }
 
@@ -60,6 +60,9 @@ public class ResuambleUploadSamples extends OssSamples {
                 }
                 if (serviceException != null) {
                     // 服务异常
+                    if(responseListener != null) {
+                        responseListener.onFail(serviceException.toString());
+                    }
                     Log.e("ErrorCode", serviceException.getErrorCode());
                     Log.e("RequestId", serviceException.getRequestId());
                     Log.e("HostId", serviceException.getHostId());
@@ -145,8 +148,8 @@ public class ResuambleUploadSamples extends OssSamples {
                 if(successListenerInSample != null) {
                     successListenerInSample.onSuccess();
                 }
-                if(successListener != null) {
-                    successListener.onSuccess();
+                if(responseListener != null) {
+                    responseListener.onSuccess();
                 }
             }
 
@@ -159,6 +162,9 @@ public class ResuambleUploadSamples extends OssSamples {
                 }
                 if (serviceException != null) {
                     // 服务异常
+                    if(responseListener != null) {
+                        responseListener.onFail(serviceException.toString());
+                    }
                     Log.e("ErrorCode", serviceException.getErrorCode());
                     Log.e("RequestId", serviceException.getRequestId());
                     Log.e("HostId", serviceException.getHostId());
