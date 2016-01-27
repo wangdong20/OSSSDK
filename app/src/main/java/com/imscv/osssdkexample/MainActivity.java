@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.imscv.osssdk.OnResponseListener;
 import com.imscv.osssdk.RequestWrapper;
 import com.imscv.osssdk.RequestWrapperQueue;
+import com.imscv.osssdk.SNUtils;
 import com.imscv.osssdk.UploadFileInfoInServer;
 
 import org.json.JSONException;

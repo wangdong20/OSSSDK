@@ -12,7 +12,6 @@ import com.alibaba.sdk.android.oss.common.auth.OSSCredentialProvider;
 import com.alibaba.sdk.android.oss.common.auth.OSSFederationCredentialProvider;
 import com.alibaba.sdk.android.oss.common.auth.OSSFederationToken;
 import com.alibaba.sdk.android.oss.common.utils.IOUtils;
-import com.imscv.osssdkexample.SNUtils;
 
 import org.json.JSONObject;
 

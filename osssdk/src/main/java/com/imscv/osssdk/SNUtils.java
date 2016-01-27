@@ -1,4 +1,4 @@
-package com.imscv.osssdkexample;
+package com.imscv.osssdk;
 
 import android.content.Context;
 import android.telephony.TelephonyManager;
