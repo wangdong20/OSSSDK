@@ -26,9 +26,9 @@ import java.util.List;
  */
 public class MultipartUploadSamples extends OssSamples {
 
-    public MultipartUploadSamples(OSS client, String testBucket, String testObject, String uploadFilePath) {
-        super(client, testBucket, testObject, uploadFilePath);
-    }
+//    public MultipartUploadSamples(OSS client, String testBucket, String testObject, String uploadFilePath) {
+//        super(client, testBucket, testObject, uploadFilePath);
+//    }
 
     public MultipartUploadSamples(OSS client, RequestWrapper wrapper) {
         super(client, wrapper);
@@ -68,12 +68,9 @@ public class MultipartUploadSamples extends OssSamples {
 
         CompleteMultipartUploadRequest complete = new CompleteMultipartUploadRequest(testBucket, testObject, uploadId, partETags);
         CompleteMultipartUploadResult completeResult = oss.completeMultipartUpload(complete);
-        if(successListenerInSample != null) {
-            successListenerInSample.onSuccess();
-        }
 
         if(responseListener != null) {
-            responseListener.onSuccess();
+            responseListener.onSuccess(wrapper);
         }
 
         Log.d("multipartUpload", "multipart upload success! Location: " + completeResult.getLocation());

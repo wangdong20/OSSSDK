@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 BUCKET, generatePathInServer("20160108115205.jpg"),
                 PHOTO_PATH + "/" + "20160108115205.jpg", new OnResponseListener() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(final RequestWrapper wrapper) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -93,14 +93,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }));
         queue.add(new RequestWrapper(RequestWrapper.RequestType.GET,
-                BUCKET, generatePathInServer("20160108182657.jpg"),
-                PHOTO_PATH + "/" + "20160108182657.jpg", new OnResponseListener() {
+                BUCKET, generatePathInServer("20160122135716.jpg"),
+                PHOTO_PATH + "/" + "20160122135716.jpg", new OnResponseListener() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(final RequestWrapper wrapper) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(MainActivity.this, "已下载20160108182657.jpg", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "已下载20160122135716.jpg", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -116,14 +116,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }));
         queue.add(new RequestWrapper(RequestWrapper.RequestType.GET,
-                BUCKET, generatePathInServer("20160108182702.jpg"),
-                PHOTO_PATH + "/" + "20160108182702.jpg", new OnResponseListener() {
+                BUCKET, generatePathInServer("20160122135721.jpg"),
+                PHOTO_PATH + "/" + "20160122135721.jpg", new OnResponseListener() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(final RequestWrapper wrapper) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(MainActivity.this, "已下载20160108182702.jpg", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "已下载20160122135721.jpg", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -169,10 +169,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 BUCKET, generatePathInServer("20160108115205.jpg"),
                 PHOTO_PATH + "/" + "20160108115205.jpg", new OnResponseListener() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(final RequestWrapper wrapper) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        uploadFileInfoToServer(wrapper);
                         Toast.makeText(MainActivity.this, "已上传20160108115205.jpg", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -189,14 +190,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }));
         queue.add(new RequestWrapper(RequestWrapper.RequestType.PUT,
-                BUCKET, generatePathInServer("20160108182657.jpg"),
-                PHOTO_PATH + "/" + "20160108182657.jpg", new OnResponseListener() {
+                BUCKET, generatePathInServer("20160122135716.jpg"),
+                PHOTO_PATH + "/" + "20160122135716.jpg", new OnResponseListener() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(final RequestWrapper wrapper) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(MainActivity.this, "已上传20160108182657.jpg", Toast.LENGTH_SHORT).show();
+                        uploadFileInfoToServer(wrapper);
+                        Toast.makeText(MainActivity.this, "已上传20160122135716.jpg", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -212,14 +214,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }));
         queue.add(new RequestWrapper(RequestWrapper.RequestType.PUT,
-                BUCKET, generatePathInServer("20160108182702.jpg"),
-                PHOTO_PATH + "/" + "20160108182702.jpg", new OnResponseListener() {
+                BUCKET, generatePathInServer("20160122135721.jpg"),
+                PHOTO_PATH + "/" + "20160122135721.jpg", new OnResponseListener() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(final RequestWrapper wrapper) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(MainActivity.this, "已上传20160108182702.jpg", Toast.LENGTH_SHORT).show();
+                        uploadFileInfoToServer(wrapper);
+                        Toast.makeText(MainActivity.this, "已上传20160122135721.jpg", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -262,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void uploadFileInfoToServer(RequestWrapper wrapper) {
         Gson gson = new Gson();
         final String json = gson.toJson(wrapper2Info(wrapper));
-        final StringRequest request = new StringRequest(Request.Method.POST, "http://trobot.imscv.com:82/api/upload",
+        final StringRequest request = new StringRequest(Request.Method.POST, "http://trobot.imscv.com:82/api/uploadFile",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -271,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             String code = obj.getString("code");
                             Toast.makeText(MainActivity.this, "code is " + code + obj.toString(), Toast.LENGTH_SHORT).show();
                             if(code.equals("N00000")) {
-                                Toast.makeText(MainActivity.this, obj.getString("Message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, obj.getString("message"), Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -293,8 +296,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Volley.newRequestQueue(this).add(request);
     }
-
-
 
     private UploadFileInfoInServer wrapper2Info(RequestWrapper wrapper) {
         File file = new File(wrapper.getUploadFilePath());

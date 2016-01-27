@@ -26,9 +26,9 @@ import java.util.Random;
  */
 public class PutObjectSamples extends OssSamples {
 
-    public PutObjectSamples(OSS client, String testBucket, String testObject, String uploadFilePath) {
-        super(client, testBucket, testObject, uploadFilePath);
-    }
+//    public PutObjectSamples(OSS client, String testBucket, String testObject, String uploadFilePath) {
+//        super(client, testBucket, testObject, uploadFilePath);
+//    }
 
     public PutObjectSamples(OSS client, RequestWrapper wrapper) {
         super(client, wrapper);
@@ -41,12 +41,9 @@ public class PutObjectSamples extends OssSamples {
 
         try {
             PutObjectResult putResult = oss.putObject(put);
-            if(successListenerInSample != null) {
-                successListenerInSample.onSuccess();
-            }
 
             if(responseListener != null) {
-                responseListener.onSuccess();
+                responseListener.onSuccess(wrapper);
             }
 
             Log.d("PutObject", "UploadSuccess");
@@ -104,11 +101,8 @@ public class PutObjectSamples extends OssSamples {
                 Log.d("ETag", result.getETag());
                 Log.d("RequestId", result.getRequestId());
 
-                if(successListenerInSample != null) {
-                    successListenerInSample.onSuccess();
-                }
                 if(responseListener != null) {
-                    responseListener.onSuccess();
+                    responseListener.onSuccess(wrapper);
                 }
             }
 
@@ -145,11 +139,8 @@ public class PutObjectSamples extends OssSamples {
         try {
             PutObjectResult putResult = oss.putObject(put);
 
-            if(successListenerInSample != null) {
-                successListenerInSample.onSuccess();
-            }
             if(responseListener != null) {
-                responseListener.onSuccess();
+                responseListener.onSuccess(wrapper);
             }
 
             Log.d("PutObject", "UploadSuccess");
@@ -197,11 +188,8 @@ public class PutObjectSamples extends OssSamples {
 
                 Log.d("ETag", result.getETag());
                 Log.d("RequestId", result.getRequestId());
-                if(successListenerInSample != null) {
-                    successListenerInSample.onSuccess();
-                }
                 if(responseListener != null) {
-                    responseListener.onSuccess();
+                    responseListener.onSuccess(wrapper);
                 }
             }
 
@@ -260,11 +248,8 @@ public class PutObjectSamples extends OssSamples {
                 String serverCallbackReturnJson = result.getServerCallbackReturnBody();
 
                 Log.d("servercallback", serverCallbackReturnJson);
-                if(successListenerInSample != null) {
-                    successListenerInSample.onSuccess();
-                }
                 if(responseListener != null) {
-                    responseListener.onSuccess();
+                    responseListener.onSuccess(wrapper);
                 }
             }
 
@@ -319,11 +304,8 @@ public class PutObjectSamples extends OssSamples {
 
                 Log.d("ETag", result.getETag());
                 Log.d("RequestId", result.getRequestId());
-                if(successListenerInSample != null) {
-                    successListenerInSample.onSuccess();
-                }
                 if(responseListener != null) {
-                    responseListener.onSuccess();
+                    responseListener.onSuccess(wrapper);
                 }
             }
 
@@ -385,11 +367,8 @@ public class PutObjectSamples extends OssSamples {
             public void onSuccess(AppendObjectRequest request, AppendObjectResult result) {
                 Log.d("AppendObject", "AppendSuccess");
                 Log.d("NextPosition", "" + result.getNextPosition());
-                if(successListenerInSample != null) {
-                    successListenerInSample.onSuccess();
-                }
                 if(responseListener != null) {
-                    responseListener.onSuccess();
+                    responseListener.onSuccess(wrapper);
                 }
             }
 

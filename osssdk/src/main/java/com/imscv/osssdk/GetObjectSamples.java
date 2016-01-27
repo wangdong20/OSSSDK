@@ -22,9 +22,9 @@ import java.io.OutputStream;
  */
 public class GetObjectSamples extends OssSamples {
 
-    public GetObjectSamples(OSS client, String testBucket, String testObject, String uploadFilePath) {
-        super(client, testBucket, testObject, uploadFilePath);
-    }
+//    public GetObjectSamples(OSS client, String testBucket, String testObject, String uploadFilePath) {
+//        super(client, testBucket, testObject, uploadFilePath);
+//    }
 
     public GetObjectSamples(OSS client, RequestWrapper wrapper) {
         super(client, wrapper);
@@ -60,12 +60,9 @@ public class GetObjectSamples extends OssSamples {
             Log.d("asyncGetObjectSample", "download success.");
             inputStream.close();
             outputStream.close();
-            if(successListenerInSample != null) {
-                successListenerInSample.onSuccess();
-            }
 
             if(responseListener != null) {
-                responseListener.onSuccess();
+                responseListener.onSuccess(wrapper);
             }
 
             // 下载后可以查看文件元信息
@@ -117,12 +114,9 @@ public class GetObjectSamples extends OssSamples {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                if(successListenerInSample != null) {
-                    successListenerInSample.onSuccess();
-                }
 
                 if(responseListener != null) {
-                    responseListener.onSuccess();
+                    responseListener.onSuccess(wrapper);
                 }
 
 
@@ -189,12 +183,9 @@ public class GetObjectSamples extends OssSamples {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                if(successListenerInSample != null) {
-                    successListenerInSample.onSuccess();
-                }
 
                 if(responseListener != null) {
-                    responseListener.onSuccess();
+                    responseListener.onSuccess(wrapper);
                 }
             }
 

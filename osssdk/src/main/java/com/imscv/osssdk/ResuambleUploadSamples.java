@@ -19,9 +19,9 @@ import java.io.File;
  */
 public class ResuambleUploadSamples extends OssSamples {
 
-    public ResuambleUploadSamples(OSS client, String testBucket, String testObject, String uploadFilePath) {
-        super(client, testBucket, testObject, uploadFilePath);
-    }
+//    public ResuambleUploadSamples(OSS client, String testBucket, String testObject, String uploadFilePath) {
+//        super(client, testBucket, testObject, uploadFilePath);
+//    }
 
     public ResuambleUploadSamples(OSS client, RequestWrapper wrapper) {
         super(client, wrapper);
@@ -43,11 +43,8 @@ public class ResuambleUploadSamples extends OssSamples {
             @Override
             public void onSuccess(ResumableUploadRequest request, ResumableUploadResult result) {
                 Log.d("resumableUpload", "success!");
-                if(successListenerInSample != null) {
-                    successListenerInSample.onSuccess();
-                }
                 if(responseListener != null) {
-                    responseListener.onSuccess();
+                    responseListener.onSuccess(wrapper);
                 }
             }
 
@@ -145,11 +142,8 @@ public class ResuambleUploadSamples extends OssSamples {
             @Override
             public void onSuccess(ResumableUploadRequest request, ResumableUploadResult result) {
                 Log.d("resumableUpload", "success!");
-                if(successListenerInSample != null) {
-                    successListenerInSample.onSuccess();
-                }
                 if(responseListener != null) {
-                    responseListener.onSuccess();
+                    responseListener.onSuccess(wrapper);
                 }
             }
 
