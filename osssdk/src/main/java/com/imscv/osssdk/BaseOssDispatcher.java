@@ -97,7 +97,8 @@ public class BaseOssDispatcher implements OSSDispatcher {
                 resuambleSample.resumableUploadWithRecordPathSetting();
                 break;
             case RequestWrapper.RequestType.DELETE:
-                // TODO
+                ManageObjectSamples manageObjectSamples = new ManageObjectSamples(oss, wrapper);
+                manageObjectSamples.asyncDeleteObject();
                 break;
             case RequestWrapper.RequestType.GET:
                 GetObjectSamples getSample = new GetObjectSamples(oss, wrapper);
