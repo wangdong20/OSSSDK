@@ -216,7 +216,7 @@ public class ManageObjectSamples extends OssSamples {
     public void deleteObject() {
         // 同步删除该文件
         try {
-            DeleteObjectRequest delete = new DeleteObjectRequest(testBucket, "testObject");
+            DeleteObjectRequest delete = new DeleteObjectRequest(testBucket, testObject);
             DeleteObjectResult deleteResult = oss.deleteObject(delete);
             if (deleteResult.getStatusCode() == 204) {
                 Log.d("CopyAndDeleteObject", "Success.");
@@ -234,7 +234,7 @@ public class ManageObjectSamples extends OssSamples {
 
     public void asyncDeleteObject() {
         // 创建删除请求
-        DeleteObjectRequest delete = new DeleteObjectRequest(testBucket, "testObject");
+        DeleteObjectRequest delete = new DeleteObjectRequest(testBucket, testObject);
         // 异步删除
         OSSAsyncTask deleteTask = oss.asyncDeleteObject(delete, new OSSCompletedCallback<DeleteObjectRequest, DeleteObjectResult>() {
             @Override
