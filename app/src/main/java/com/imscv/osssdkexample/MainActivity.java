@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 通知后台服务器，文件已删除
      */
     private void notifyDelete(String fileUrl) {
-        String param = "{\"" + "filrUrl\"" + ":\"" + fileUrl + "\"" + "}";
+        String param = "{\"" + "fileUrl\"" + ":\"" + fileUrl + "\"" + "}";
         DataParamStringRequest request = new DataParamStringRequest(DELETE_FILE_INFO, param, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

@@ -45,7 +45,7 @@ public class BaseOssDispatcher implements OSSDispatcher {
                 @Override
                 public OSSFederationToken getFederationToken() {
                     try {
-                        String urlId = CREDENTIALPROVIDER_URL.replaceAll("id", "3");
+                        String urlId = CREDENTIALPROVIDER_URL.replaceAll("id", "1");
                         String urlLast = urlId.replaceAll("sn", SNUtils.getSN(mContext));
                         URL stsUrl = new URL(urlLast);
                         HttpURLConnection conn = (HttpURLConnection) stsUrl.openConnection();
