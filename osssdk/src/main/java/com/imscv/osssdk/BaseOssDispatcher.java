@@ -31,8 +31,8 @@ public class BaseOssDispatcher implements OSSDispatcher {
 
     private static final String TAG = BaseOssDispatcher.class.getSimpleName();
 
-    public static final String END_POINT = "oss-cn-shenzhen.aliyuncs.com";
-    private String CREDENTIALPROVIDER_URL = "http://trobot.imscv.com:82/api/getSTS?data={\"connectType\":id,\"param\":\"sn\"}";
+    public static final String END_POINT = "oss-cn-xxxx.aliyuncs.com";
+    private String CREDENTIALPROVIDER_URL = "http://xxxx";
 
     public BaseOssDispatcher(Context context) {
         mContext = context;
@@ -45,9 +45,7 @@ public class BaseOssDispatcher implements OSSDispatcher {
                 @Override
                 public OSSFederationToken getFederationToken() {
                     try {
-                        String urlId = CREDENTIALPROVIDER_URL.replaceAll("id", "1");
-                        String urlLast = urlId.replaceAll("sn", SNUtils.getSN(mContext));
-                        URL stsUrl = new URL(urlLast);
+                        URL stsUrl = new URL(CREDENTIALPROVIDER_URL);
                         HttpURLConnection conn = (HttpURLConnection) stsUrl.openConnection();
                         conn.setRequestMethod("POST");
                         InputStream input = conn.getInputStream();
